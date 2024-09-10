@@ -26,17 +26,24 @@ export default function GameBoard({ onSelectSquare, turns }) {
     //     onSelectSquare();
     // }
 
-    return <ol id="game-board">
-        {gameBoard.map((row, rowIndex) => (
-            <li key={rowIndex}>
-                <ol>
-                    {row.map((playerSymbol, colIndex) => (
-                        <li key={colIndex}>
-                            <button onClick={() => onSelectSquare(rowIndex, colIndex)}>{playerSymbol}</button>
-                        </li>
-                    ))}
-                </ol>
-            </li>
-        ))}
-    </ol>
+    return (
+        <ol id="game-board">
+            {gameBoard.map((row, rowIndex) => (
+                <li key={rowIndex}>
+                    <ol>
+                        {row.map((playerSymbol, colIndex) => (
+                            <li key={colIndex}>
+                                <button
+                                    onClick={() => onSelectSquare(rowIndex, colIndex)}
+                                    disabled={playerSymbol !== null}
+                                >
+                                    {playerSymbol}
+                                </button>
+                            </li>
+                        ))}
+                    </ol>
+                </li>
+            ))}
+        </ol>
+    );
 }
